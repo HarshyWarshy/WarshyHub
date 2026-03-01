@@ -9,6 +9,18 @@ const prompts = [
 const playlist = [
   {
     title: 'Lofi Study Beat (Pixabay)',
+    url: 'https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=lofi-study-112191.mp3',
+    backup: 'https://cdn.jsdelivr.net/gh/mrdoob/three.js@dev/examples/sounds/376737_Skullbeatz___Bad_Cat_Maste.mp3'
+  },
+  {
+    title: 'Calm Rain Ambience (Pixabay)',
+    url: 'https://cdn.pixabay.com/download/audio/2022/03/10/audio_7d08f0060f.mp3?filename=rain-110958.mp3',
+    backup: 'https://cdn.jsdelivr.net/gh/jakesgordon/javascript-racer@master/music/racer.ogg'
+  },
+  {
+    title: 'Night Lofi Drift (Pixabay)',
+    url: 'https://cdn.pixabay.com/download/audio/2022/03/24/audio_c9f8d0c4f9.mp3?filename=lofi-chill-140858.mp3',
+    backup: 'https://cdn.jsdelivr.net/gh/mrdoob/three.js@dev/examples/sounds/358232_j_s_song.mp3'
     url: 'https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=lofi-study-112191.mp3'
   },
   {
@@ -172,6 +184,8 @@ function initMusicPlayer() {
   }
 
   let index = Number(localStorage.getItem(STORAGE.track) || 0);
+  let triedBackup = false;
+  audio.crossOrigin = 'anonymous';
   let storedTime = Number(localStorage.getItem(STORAGE.time) || 0);
   const wasPlaying = localStorage.getItem(STORAGE.playing) === 'true';
   const wasMinimized = localStorage.getItem(STORAGE.minimized) === 'true';
@@ -198,6 +212,7 @@ function initMusicPlayer() {
   function loadTrack(i, autoplay = false) {
     index = (i + playlist.length) % playlist.length;
     const track = playlist[index];
+    triedBackup = false;
     audio.src = track.url;
     trackLabel.textContent = track.title;
     progress.value = 0;
@@ -289,6 +304,19 @@ function initMusicPlayer() {
   });
 
   audio.addEventListener('ended', () => loadTrack(index + 1, true));
+
+  audio.addEventListener('error', () => {
+    const track = playlist[index];
+    if (track.backup && !triedBackup) {
+      triedBackup = true;
+      audio.src = track.backup;
+      audio.play().catch(() => {
+        // no-op
+      });
+      return;
+    }
+    loadTrack(index + 1, false);
+  });
   window.addEventListener('beforeunload', savePlaybackState);
 
   loadTrack(index, false);
