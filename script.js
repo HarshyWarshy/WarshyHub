@@ -101,6 +101,30 @@ function initPromptGenerator() {
   }
 }
 
+
+function normalizeNavigation() {
+  const nav = document.querySelector('.top-nav');
+  if (!nav) return;
+
+  const logos = nav.querySelectorAll('.logo');
+  logos.forEach((logo, idx) => {
+    if (idx > 0) logo.remove();
+  });
+
+  const linksContainer = nav.querySelector('.nav-links');
+  if (!linksContainer) return;
+
+  const seen = new Set();
+  linksContainer.querySelectorAll('a').forEach((link) => {
+    const key = link.getAttribute('href') || link.textContent.trim();
+    if (seen.has(key)) {
+      link.remove();
+    } else {
+      seen.add(key);
+    }
+  });
+}
+
 function initScrollAnimation() {
   const onScroll = () => {
     const y = window.scrollY || window.pageYOffset;
@@ -327,6 +351,9 @@ function initMusicPlayer() {
       // Autoplay may be blocked until user interaction
     });
   }
+}
+
+normalizeNavigation();
   });
 
   audio.addEventListener('ended', () => {
