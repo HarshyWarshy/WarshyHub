@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WarshyHub | Focus Themes + Music</title>
     <meta name="description" content="Focus mode page with website-wide theme presets and built-in study music controls." />
+    <link rel="stylesheet" href="styles.css" />
     <meta name="description" content="Focus mode page with website themes and non-copyright lofi/rain music links." />
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
@@ -12,6 +13,7 @@
   <body class="theme-default">
     <header class="hero">
       <nav class="top-nav">
+        <a class="logo" href="index.html"><span class="logo-text">WarshyHub</span></a>
         <a class="logo" href="index.html"><img src="favicon.svg" alt="WH logo" class="logo-icon" /><span class="logo-text">WarshyHub</span></a>
         <a class="logo" href="index.html">WarshyHub</a>
         <div class="nav-links">
@@ -27,6 +29,7 @@
       <section class="hero-content">
         <p class="eyebrow">Focus Mode</p>
         <h1>Website Theme Presets + Built-In Study Player</h1>
+        <p class="lede">Theme choices apply across the whole site. The bottom-left player appears on every page and supports play/pause, previous/next, scrubbing, and minimize/reopen controls.</p>
         <p class="lede">Theme choices apply across the whole site, and the player in the bottom-left lets you play/pause, skip tracks, go previous, and scrub through the timeline.</p>
         <h1>Theme Switcher + Non-Copyright Study Music</h1>
         <p class="lede">Choose a visual theme and open safe-to-use music sources (royalty-free/non-copyright libraries) for your study session.</p>
@@ -48,6 +51,7 @@
       <section class="section grid">
         <article class="card">
           <h3>Playlist</h3>
+          <p>Select a track to play in the global built-in player. Tracks are from royalty-free/non-copyright libraries.</p>
           <p>Select a track to play in the built-in player. Tracks are from royalty-free/non-copyright libraries.</p>
           <div class="button-row" id="playlist-buttons"></div>
         </article>
@@ -63,6 +67,9 @@
       </section>
     </main>
 
+    <footer><p>WarshyHub ✦ Focus-ready studying with website-wide themes and in-page music.</p></footer>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <div class="music-player" id="music-player">
       <div class="player-title">Now Playing</div>
       <div class="player-track" id="player-track">No track selected</div>
