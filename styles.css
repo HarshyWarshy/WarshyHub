@@ -9,10 +9,18 @@
   --warn: #ffd479;
   --border: #2b3769;
   --shadow: 0 16px 34px rgba(0, 0, 0, 0.25);
+  --scroll-shift: 0px;
 }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  position: relative;
+  overflow-x: hidden;
+  font-family: Inter, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background: radial-gradient(circle at top, #11183a, var(--bg) 52%);
   --bg: #0b1020;
   --surface: #131a33;
   --surface-2: #1a2342;
@@ -36,6 +44,33 @@ body {
   line-height: 1.6;
 }
 
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  pointer-events: none;
+  z-index: -1;
+  width: 45vmax;
+  height: 45vmax;
+  border-radius: 999px;
+  filter: blur(70px);
+  opacity: 0.22;
+}
+
+body::before {
+  top: calc(-12vmax + var(--scroll-shift));
+  left: -12vmax;
+  background: radial-gradient(circle, rgba(138, 149, 255, 0.8), rgba(138, 149, 255, 0));
+}
+
+body::after {
+  bottom: calc(-10vmax - var(--scroll-shift));
+  right: -10vmax;
+  background: radial-gradient(circle, rgba(112, 231, 196, 0.7), rgba(112, 231, 196, 0));
+}
+
+.hero {
+  padding: 1.25rem clamp(1rem, 3vw, 3rem) 2.5rem;
 .hero {
   padding: 1.25rem clamp(1rem, 3vw, 3rem) 2.5rem;
   padding: 1.5rem clamp(1rem, 3vw, 3rem) 3rem;
@@ -237,6 +272,7 @@ main {
   cursor: pointer;
 }
 
+.link-btn { margin-top: 0; }
 .link-btn {
   margin-top: 0;
 }
@@ -268,6 +304,57 @@ main {
   color: var(--muted);
   background: rgba(10,14,30,0.6);
   border: 1px dashed #46559a;
+  border-radius: 0.6rem;
+  padding: 0.9rem;
+}
+
+.music-player {
+  position: fixed;
+  left: 1rem;
+  bottom: 1rem;
+  width: min(360px, calc(100vw - 2rem));
+  padding: 0.75rem;
+  border-radius: 1rem;
+  background: rgba(11, 17, 34, 0.92);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  z-index: 130;
+}
+
+.player-title {
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.player-track {
+  font-weight: 700;
+  margin: 0.25rem 0 0.5rem;
+}
+
+#player-progress {
+  width: 100%;
+}
+
+.player-time {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 0.25rem;
+}
+
+.player-controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+}
+
+.player-controls .link-btn {
+  margin-top: 0;
+  min-width: 3rem;
+  text-align: center;
 .card-section {
   margin-top: 2rem;
 }

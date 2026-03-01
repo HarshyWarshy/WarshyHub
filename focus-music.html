@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WarshyHub | Focus Themes + Music</title>
+    <meta name="description" content="Focus mode page with website-wide theme presets and built-in study music controls." />
     <meta name="description" content="Focus mode page with website themes and non-copyright lofi/rain music links." />
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
@@ -25,6 +26,8 @@
       </nav>
       <section class="hero-content">
         <p class="eyebrow">Focus Mode</p>
+        <h1>Website Theme Presets + Built-In Study Player</h1>
+        <p class="lede">Theme choices apply across the whole site, and the player in the bottom-left lets you play/pause, skip tracks, go previous, and scrub through the timeline.</p>
         <h1>Theme Switcher + Non-Copyright Study Music</h1>
         <p class="lede">Choose a visual theme and open safe-to-use music sources (royalty-free/non-copyright libraries) for your study session.</p>
       </section>
@@ -38,11 +41,42 @@
           <button class="link-btn alt" type="button" data-theme="theme-forest">Forest Focus</button>
           <button class="link-btn" type="button" data-theme="theme-sunset">Sunset Focus</button>
         </div>
+        <p class="lede">The selected preset is saved and reused when you open other WarshyHub pages.</p>
         <p class="lede">These presets only change colors locally in your browser for better focus comfort.</p>
       </section>
 
       <section class="section grid">
         <article class="card">
+          <h3>Playlist</h3>
+          <p>Select a track to play in the built-in player. Tracks are from royalty-free/non-copyright libraries.</p>
+          <div class="button-row" id="playlist-buttons"></div>
+        </article>
+        <article class="card">
+          <h3>Source Libraries</h3>
+          <p>Need more tracks? Browse these resources and add your own links later.</p>
+          <div class="button-row">
+            <a class="link-btn" target="_blank" rel="noopener noreferrer" href="https://pixabay.com/music/search/genre/lofi/">Pixabay Lofi</a>
+            <a class="link-btn" target="_blank" rel="noopener noreferrer" href="https://mixkit.co/free-stock-music/lofi/">Mixkit Lofi</a>
+            <a class="link-btn" target="_blank" rel="noopener noreferrer" href="https://pixabay.com/sound-effects/search/rain/">Pixabay Rain</a>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <div class="music-player" id="music-player">
+      <div class="player-title">Now Playing</div>
+      <div class="player-track" id="player-track">No track selected</div>
+      <input id="player-progress" type="range" min="0" max="100" value="0" step="0.1" />
+      <div class="player-time"><span id="player-current">0:00</span><span id="player-duration">0:00</span></div>
+      <div class="player-controls">
+        <button type="button" class="link-btn" id="player-prev">⏮</button>
+        <button type="button" class="link-btn alt" id="player-toggle">▶</button>
+        <button type="button" class="link-btn" id="player-next">⏭</button>
+      </div>
+      <audio id="focus-audio" preload="metadata"></audio>
+    </div>
+
+    <footer><p>WarshyHub ✦ Focus-ready studying with website-wide themes and in-page music.</p></footer>
           <h3>Royalty-Free Lofi</h3>
           <p>Curated sources with tracks intended for copyright-safe usage (check each track’s license terms).</p>
           <div class="button-row">
