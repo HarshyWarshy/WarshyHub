@@ -319,3 +319,22 @@ footer {
 @media (max-width: 700px) {
   .top-nav { align-items: flex-start; flex-direction: column; }
 }
+
+
+.theme-forest {
+  --bg: #081913;
+  --surface: #0f2a21;
+  --surface-2: #15382c;
+  --border: #2c6b55;
+  --accent: #43c59b;
+  --accent-2: #88f0cd;
+}
+
+.theme-sunset {
+  --bg: #1b0c16;
+  --surface: #2b1630;
+  --surface-2: #412048;
+  --border: #7f3d7d;
+  --accent: #ef7aa9;
+  --accent-2: #ffc08d;
+}
