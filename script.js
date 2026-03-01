@@ -9,6 +9,11 @@ const prompts = [
   'Analyze one continuity and one change in global trade networks from 1900 to the present.',
   'Explain how religious beliefs influenced governance in one empire between 1450 and 1750.',
   'Evaluate the impact of technological innovation on warfare in the period 1900 to present.'
+  'Compare how the Mongol Empire and the Ottoman Empire maintained control over diverse populations.',
+  'Explain one continuity and one change in Indian Ocean trade from 1200 to 1750.',
+  'Evaluate how industrialization affected social classes in the 19th century.',
+  'Analyze one cause and one consequence of decolonization after World War II.',
+  'Describe how belief systems influenced state-building in any one empire from 1450 to 1750.'
 ];
 
 const promptElement = document.getElementById('prompt');
@@ -23,3 +28,5 @@ if (promptElement && promptButton) {
   promptButton.addEventListener('click', showPrompt);
   showPrompt();
 }
+promptButton.addEventListener('click', showPrompt);
+showPrompt();

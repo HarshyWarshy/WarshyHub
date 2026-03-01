@@ -12,3 +12,8 @@ WarshyHub is a refined, dark-theme AP World History study website with in-depth 
 ## Run locally
 
 Open `index.html` directly in a browser, or serve the folder with any static server.
+A user-friendly, dark-theme AP World History study website with dedicated pages for home, timeline, themes, and practice.
+
+## Run locally
+
+Open `index.html` in a browser, or serve with any static server.
